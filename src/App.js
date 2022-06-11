@@ -2,12 +2,15 @@
 import "./App.css";
 import styled from "styled-components";
 import { Header } from "./components/header";
+import { DisplaySocialMediaView } from "./components/SocialMediaDashboard/index";
 
 function App() {
   return (
     <div>
       <Header />
-      <Layout></Layout>
+      <Layout>
+        <DisplaySocialMediaView />
+      </Layout>
     </div>
   );
 }
