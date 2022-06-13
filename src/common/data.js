@@ -21,6 +21,6 @@ export const data = [
     handle: "Nathan F",
     socialMediaPlatform: "youtube",
     followers: 8239,
-    todayFollowerChange: 144,
+    todayFollowerChange: -144,
   },
 ];
