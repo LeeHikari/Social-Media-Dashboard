@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
-export function Header() {
+export function Header({ totalFollowers }) {
   return (
     <HeaderDiv>
       <Title>Social Media Dashboard</Title>
-      <FollowerCount>Total Followers: 23,004</FollowerCount>
+      {/* Needs a comma */}
+      <FollowerCount>Total Followers: {totalFollowers}</FollowerCount>
     </HeaderDiv>
   );
 }
