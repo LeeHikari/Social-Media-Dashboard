@@ -1,27 +1,45 @@
-//import logo from "../../common/images/";
 import styled from "styled-components";
-import { TodayFollowerChange } from "../TodayFollowerChange";
 import { data } from "../../common/data.js";
 
 export function DisplaySocialMediaView() {
+  function TodayFollowerChange({ todayFollowerChange }) {
+    if (todayFollowerChange === 0) {
+      return;
+    }
+
+    if (Math.sign(todayFollowerChange) === 1) {
+      return <span style={{ color: "green" }}>{todayFollowerChange}</span>;
+    }
+
+    return (
+      <span style={{ color: "red" }}>{Math.abs(todayFollowerChange)}</span>
+    );
+  }
+
   return (
     <Grid>
-      {data.map((stat) => (
-        <div key={stat.handle + stat.socialMediaPlatform}>
-          <div style={{ alignItems: "center", display: "flex", gap: "6px" }}>
-            <img
-              src={`/images/icon-${stat.socialMediaPlatform}.svg`}
-              alt={stat.socialMediaPlatform}
-            />
-            <span>@{stat.handle}</span>
+      {data.map((stat) => {
+        //Destructuring props
+        const { socialMediaPlatform, handle, todayFollowerChange, followers } =
+          stat;
+
+        return (
+          <div key={handle + socialMediaPlatform}>
+            <div style={{ alignItems: "center", display: "flex", gap: "6px" }}>
+              <img
+                src={`/images/icon-${socialMediaPlatform}.svg`}
+                alt={socialMediaPlatform}
+              />
+              <span>@{handle}</span>
+            </div>
+            <div>
+              {followers}
+              <div>Followers</div>
+              <TodayFollowerChange todayFollowerChange={todayFollowerChange} />
+            </div>
           </div>
-          <div>
-            {stat.followers}
-            <div>Followers</div>
-            <TodayFollowerChange />
-          </div>
-        </div>
-      ))}
+        );
+      })}
     </Grid>
   );
 }
